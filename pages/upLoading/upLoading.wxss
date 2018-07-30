@@ -87,7 +87,7 @@ page {
     color: #333333;
     font-size: 30rpx;
     font-weight: bold;
-    margin-bottom: 20rpx;
+    margin-bottom: 10rpx;
 }
 .circle {
     position: absolute;
@@ -200,3 +200,8 @@ page {
   font-size: 22rpx;
   line-height: 35rpx;
 } 
+.list1 input{
+  line-height: 40rpx;
+  height: 40rpx;
+  min-height: 40rpx;
+}

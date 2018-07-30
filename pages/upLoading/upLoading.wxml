@@ -7,6 +7,7 @@
           <view class='circle'></view>
           <input class='name' bindtap='setName' placeholder='姓名'  type='text' value='{{detailData.name}}' bindinput='inputName'></input>
           <input class='company' bindtap='setCompany' placeholder='公司名称' type='text' value='{{detailData.company}}'  bindinput='inputCompany'></input>
+          <input class='company' bindtap='setPosition' placeholder='职位' type='text' value='{{detailData.position}}'  bindinput='inputPosition'></input>
         </view>
         <view class='list2'>
           <view>

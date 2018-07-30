@@ -69,19 +69,20 @@ Page({
     // 打开相机拍照上传图片
     bindCamera: function() {
         var _this = this;
+        
         wx.chooseImage({
             count: 1, // 默认9
-            // sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-            // sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             sizeType: ['compressed'],
             sourceType: ['album', 'camera'],
             success: function(res) {
                 var tempFilePaths = res.tempFilePaths;
-                console.log(res.tempFilePaths[0]);
-                
                 var data = {
                     path: tempFilePaths[0]
                 };
+                wx.showLoading({
+                  title: '加载中',
+                  mask:true
+                })
                 network.uploadFile({
                     params: data,
                     success: function(res) {
@@ -97,6 +98,7 @@ Page({
                         });
                         // res.data.msg
                         if (res.data.status == 1) {
+                            wx.hideLoading();
                             popup.showToast('图片上传成功', 'success');
                             wx.setStorage({
                                 key: "phoneUrl",
@@ -136,10 +138,7 @@ Page({
         }
     },
     onShareAppMessage: function(e) {
-        return {
-            title: '嘎嘎',
-            path: '/pages/index/index'
-        }
+
     },
     getUserInfo: function(e) {
         console.log(e.detail.errMsg);
@@ -173,6 +172,10 @@ Page({
     },
     onShow: function() {
         var _this = this;
+        wx.showLoading({
+          title: '加载中',
+          mask:true
+        });
         setTimeout(function() {
             var url = config.route + api.addUserCard,
                 data = {
@@ -183,6 +186,7 @@ Page({
                 success: function(res) {
                     // 对象不能直接用length计算长度
                     var arr = Object.keys(res.data);
+                    
                     if (arr.length > 0) {
                         _this.setData({
                             all: res.data
@@ -192,6 +196,7 @@ Page({
                             all: {}
                         });
                     }
+                    wx.hideLoading();
                 },
                 fail: function() {
                     //失败后的逻辑  

@@ -15,7 +15,7 @@
       <view class='cardBox'>
         <text class='companyName companyName1'>{{all.company==null? "公司名称":all.company}}</text>
         <view class='message message1'>
-          <text class='name'>{{all.name == null ? "姓名":all.name}}</text>
+          <text class='name'>{{all.name == null ? "姓名":all.name}}<text class='position'>（{{all.position==null ? '' : all.position}}）</text></text>
           <view class='phone mBox'>
             <view class="{{all.phone==null?'':'has'}}">
               <text>C</text>{{all.phone==null ? '' : all.phone}}</view>
@@ -41,6 +41,10 @@
       <view class='inputs'>
         <text>公司</text>
         <input type="text" placeholder="请输入公司名称" placeholder-style='inputPlace' name="company" value="{{all.company==null? '':all.company}}" />
+      </view>
+      <view class='inputs'>
+        <text>职位</text>
+        <input type="text" placeholder="请输入公司位置" placeholder-style='inputPlace' name="position" value="{{all.position==null? '':all.position}}" />
       </view>
       <view class='inputs'>
         <text>电话</text>

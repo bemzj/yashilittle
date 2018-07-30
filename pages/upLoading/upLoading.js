@@ -19,6 +19,7 @@ Page({
             mail: '',
             address: '',
             area: '地址：',
+            position:''
         },
         imgPop: false,
         phoneUrl: '',
@@ -61,6 +62,19 @@ Page({
                 })
             }
         })
+    },
+    //设置职位
+    setPosition: function (e) {
+      var _this = this;
+      var details = _this.data.detailData;
+      wx.getClipboardData({
+        success: function (res) {
+          details.position = res.data;
+          _this.setData({
+            detailData: details
+          })
+        }
+      })
     },
     //设置手机号码
     setPhone: function(e) {
@@ -131,6 +145,15 @@ Page({
         _this.setData({
             detailData: detail
         });
+    },
+    inputPosition: function (e) {
+      var _this = this;
+      var val = e.detail.value;
+      var detail = _this.data.detailData;
+      detail.position = val;
+      _this.setData({
+        detailData: detail
+      });
     },
     inputCompany: function(e) {
         var _this = this;
@@ -230,6 +253,7 @@ Page({
                                     phone: allDate.tel_cell["0"],
                                     mail: allDate.email["0"],
                                     address: allDate.addr["0"],
+                                    position: allDate.department[0],
                                     area: '地址：'
                                 }
                                 _this.setData({

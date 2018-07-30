@@ -12,56 +12,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        cardList: [{
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }, {
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }, {
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }, {
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }, {
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }, {
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }, {
-            name: '王志恒',
-            company: '广州恒帝科技信息有限公司',
-            phone: '137829837498',
-            email: 'jieudngsg@163.com',
-            address: '广东省广州市海珠区琶洲商业广场11栋',
-            show: false
-        }]
+        cardList: [],
+        tips:false
     },
     click: function(event) {
         var _this = this;
@@ -91,8 +43,25 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
+
+        wx.showLoading({
+          title: '加载中',
+        });
+
         // console.log(app.globalData);
         var _this = this;
+        setTimeout(function(){
+          _this.setData({
+            tips: true
+          });
+          setTimeout(function () {
+            _this.setData({
+              tips: false
+            });
+
+          }, 3000);
+        },500);
+        
         var url = config.route + api.getUserCard;
         var data = {
             uid: app.globalData.id,
@@ -100,6 +69,7 @@ Page({
         network.GET(url, {
             params: data,
             success: function(res) {
+                wx.hideLoading();
                 if (res.data.length > 0) {
                     _this.setData({
                         cardList: res.data
@@ -116,43 +86,70 @@ Page({
             },
         })
     },
-    delCard: function(e) {
-        // 名片的id
-        // console.log(e.target.dataset.id);
-        var _this = this;
-        var url = config.route + api.delMycard,
+    show:function(e){
+      var _this = this;
+      wx.showActionSheet({
+        itemList: ['删除'],
+        success: function (res) {
+          var url = config.route + api.delMycard,
             data = {
-                uid: app.globalData.id,
-                id: e.target.dataset.id
+              uid: app.globalData.id,
+              id: e.currentTarget.dataset.vid
             };
-        network.GET(url, {
+            
+          network.GET(url, {
             params: data,
-            success: function(res) {
-                // 对象不能直接用length计算长度
-                var arr = Object.keys(res.data);
-                if (arr.length > 0) {
-                    popup.showToast(res.data.msg, 'success');
-                    var info = _this.data.cardList;
-                    var newInfo = [];
-                    for (var i = 0; i < info.length; i++) {
-                        if (info[i].id != e.target.dataset.id) {
-                            newInfo.push(info[i]);
-                        }
-                    }
-                    // console.log(newInfo);
-                    _this.setData({
-                        cardList: newInfo
+            success: function (res) {
+              var myres = res.data;
+              console.log(res);
+              if (myres.status==1)
+              {
+                network.GET(url, {
+                  params: data,
+                  success: function (res) {
+                    wx.showToast({
+                      title: myres.msg
                     });
-                } else {
-                    popup.showToast(res.data.msg);
-                }
+                    if (res.data.length > 0) {
+                      _this.setData({
+                        cardList: res.data
+                      });
+                      
+                    } else {
+                      _this.setData({
+                        cardList: []
+                      });
+                    }
+                    //拿到解密后的数据，进行代码逻辑
+                  },
+                  fail: function () {
+                    //失败后的逻辑  
+                    wx.showToast({
+                      title: "网络错误"
+                    });
+                  },
+                })
+              }else{
+                wx.showToast({
+                  title: myres.msg
+                });
+              }
+              
             },
-            fail: function() {
-                //失败后的逻辑  
+            fail: function () {
+              //失败后的逻辑  
             },
-        })
+          })
+        },
+        fail: function (res) {
+
+        }
+      });
     },
     uploadCard: function() {
+        wx.showLoading({
+          title: '加载中'
+        })
         var _this = this;
         wx.chooseImage({
             count: 1, // 默认9
@@ -172,6 +169,7 @@ Page({
                         res.data = JSON.parse(res.data);
                         // res.data.msg
                         if (res.data.status == 1) {
+                            wx.hideLoading();
                             popup.showToast('图片上传成功', 'success');
                             wx.setStorage({
                                 key: "phoneUrl",
@@ -211,5 +209,31 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {}
+    onShareAppMessage: function() {},
+    //保存到联系人
+    download:function(e){
+      var _this = this;
+      var data = _this.data.cardList[e.currentTarget.dataset.index];
+      wx.addPhoneContact({
+        nickName: data.name,
+        firstName: data.name,
+        mobilePhoneNumber: data.phone,
+        organization: data.company,
+        title:data.position,
+        workAddressPostalCode: data.mail,
+        workAddressStreet: data.address,
+        success:function(){
+          wx.showToast({
+            title: '保存成功！',
+          })
+        },
+        fail:function(){
+          wx.showToast({
+            title: '保存失败！',
+          })
+        }
+      })
+      console.log(e);
+      console.log();
+    }
 })

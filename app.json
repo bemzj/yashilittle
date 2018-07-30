@@ -1,10 +1,11 @@
 {
     "pages": [
+      
         "pages/index/index",
         "pages/upLoading/upLoading",
         "pages/nameCard/nameCard",
         "pages/create/create",
-        
+      "pages/share/share",  
     	"pages/my/my",
     	"pages/case/case",
     	"pages/about/about"

@@ -1,3 +1,7 @@
+<!--  -->
+<view class='tipTop {{tips?"tipHeight":""}}' >
+  <text>温馨提示：长按该名片可以删除哦</text>
+</view>
 <!--pages/nameCard/nameCard.wxml-->
 <view id='cardName'>
   <block wx:if='{{cardList.length == 0}}'>
@@ -12,7 +16,7 @@
       <view class='wrap1-3'>
         <!-- <image style="" mode="" src="http://tmp/wx31038753ee647800.o6zAJsyQvFz_wOH3_lefGwrfqsDw.pzVEsn6M4ZD00acfe0596a0fb1b729c1419405c463a9.png" binderror="" bindload=""></image> -->
         <button bindtap="uploadCard">
-          <icon style='background: url("../../images/icon01.png") no-repeat;background-size:100% 100%;'></icon>
+          <icon style='no-repeat;background-size:100% 100%;' class='photoIcon'></icon>
           <text>拍照上传名片</text>
         </button>
       </view>
@@ -23,34 +27,32 @@
       <view class='wrap2-bottom'>
         <view class='opacity-wrap'></view>
         <button bindtap="uploadCard">
-          <icon style='background: url("../../images/icon01.png") no-repeat;background-size:100% 100%;'></icon>
+          <icon style='no-repeat;background-size:100% 100%;' class='photoIcon'></icon>
           <text>拍照上传名片</text>
         </button>
       </view>
       <scroll-view class='wrap2-cont' scroll-y>
         <block wx:for='{{cardList}}' wx:for-index='index' wx:for-item='item' wx:key='{{index}}' wx:if="{{ cardList.length > 0 }}">
-          <view class="wrap-list {{item.show?'showList':''}}">
+          <view class="wrap-list {{item.show?'showList':''}}" bindlongtap='show' data-vid="{{item.id}}">
             <view class='circle color{{index}}'></view>
-            <view class='infoWrap' bindtap='click' data-index="{{index}}">
-              <text class='name'>{{item.name}}</text>
+            <view class='infoWrap' bindtap='click' data-index="{{index}}" >
+              <text class='name'>{{item.name}}<text class='position'>（运营总监）</text></text>
               <text class='company'>{{item.company}}</text>
-              <icon type='clear' color='rgb(222,222,225)' data-id="{{ item.id }}" size='25' bindtap="delCard" class='delete'></icon>
+              <button class='save' catchtap='download' data-index="{{index}}">保存到联系人</button>
             </view>
             <view class="detailWrap {{item.show?'showList':''}}">
+              <button class='myShare'></button>
               <view class='dw'>
                 <view class='dw-1'>
                   <view class='dw1-1'>
-                    <icon style='background: url("../../images/msg3.png") no-repeat;background-size:100% 100%;'></icon>
                     <text>{{item.phone}}</text>
                   </view>
                   <view class='dw1-2'>
-                    <icon style='background: url("../../images/msg4.png") no-repeat;background-size:100% 100%;'></icon>
                     <text>{{item.mail}}</text>
                   </view>
                 </view>
                 <view class='dw-2'>
                   <view class='dw2-1'>
-                    <icon style='background: url("../../images/msg5.png") no-repeat;background-size:100% 100%;'></icon>
                     <text>{{item.address}}</text>
                   </view>
                 </view>

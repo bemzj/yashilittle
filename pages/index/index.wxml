@@ -12,7 +12,7 @@
       <view class='cardBox'>
           <text class='companyName'>{{all.company==null? "公司名称":all.company}}</text>
           <view class='message'>
-            <text class='name'>{{all.name == null ? "姓名":all.name}}</text>
+            <text class='name'>{{all.name == null ? "姓名":all.name}}<text class='position'>（技术总监）</text></text>
             <view class='phone mBox'>             
               <view class="{{all.phone==null?'':'has'}}"><text>C</text>{{all.phone==null ? '' : all.phone}}</view>
             </view>

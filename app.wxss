@@ -65,6 +65,9 @@ view {
     display: block;
     margin-bottom: 35rpx;
 }
+.message .position{
+    font-size: 24rpx;
+}
 .message .mBox {
     height: 38rpx;
     margin: 5px 0;
