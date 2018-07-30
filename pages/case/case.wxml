@@ -1,0 +1,55 @@
+<view class='wrap'>
+  <view class="head">
+    <image src="{{topBj}}" mode='widthFix' alt=""></image>
+    <view class="head-search clearfloat">
+      <view>
+        <image src="{{logo}}" mode='widthFix' alt=""></image>
+      </view>
+      <view>
+        <input type="text" placeholder="输入关键字搜索" placeholder-class="{{inputIndex==0?'inputPlaceholder':'inputPlaceholder1'}}" confirm-type='发送' bindfocus='inputOut' bindblur='inputIn' />
+      </view>
+    </view>
+    <view class="head-title">
+      <view>恒帝科技精选案例展示</view>
+      <view>HENGDIKEJI SELECTED CASE DISPLAY</view>
+    </view>
+  </view>
+  <view class="list1">
+    <view class="clearfloat">
+      <view class="{{navIndex==index?'sel':''}}" wx:for="{{nav}}" wx:key="index" bindtap="navClass" data-index='{{index}}'>
+        <view hover-class="none">{{item.navMame}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="list2 clearfloat">
+    <view class="row {{classifyIndex==index?'cSel':''}}" wx:for="{{nav[navIndex].classify}}" wx:key="index" bindtap="classifyClass" data-index='{{index}}'>
+      <view>{{item.cName}}</view>
+    </view>
+  </view>
+  <view class="list3">
+    <view class="slide" wx:for="{{nav[navIndex].classify[classifyIndex].listData}}" wx:key="{{index}}">
+      <navigator url='{{item.url}}'>
+        <view>
+          <image src="{{item.imgUrl}}"  mode='widthFix' alt=""></image>
+        </view>
+        <view class="slide1">
+          <view class="slide1-title">{{item.name}}</view>
+          <view class="clearfloat slide1-title2">
+            <view>
+              <view>{{item.look}}</view>
+            </view>
+            <view>
+              <view>{{item.collect}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="slide2">
+          <view>
+            <view>{{item.firstName}}<view>（{{item.secondName}}）</view></view>
+             <image src="http://www.hengdikeji.com/home/img/xingzhuang02.png" mode='widthFix' alt=""></image>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

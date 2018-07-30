@@ -1,0 +1,21 @@
+<view id='about'>
+  <view class='banner'>
+    <image src='{{bannerSrc}}' mode='widthFix'></image>
+  </view>
+  <view wx:for="{{allDate}}" wx:key="index" class='part'>
+    <view class='box'>
+      <view class='title'>
+        <image mode='widthFix' src='{{allDate[index].title}}' wx:if="{{index==0}}"> </image>
+        <text wx:else>{{allDate[index].title}}</text>
+      </view>
+      <view class='content'>
+          <text>{{allDate[index].content}}</text>
+      </view>
+      <view class='imgBox'>
+        <view   wx:for="{{allDate[index].imgsrc}}" wx:key="it">
+          <image src='{{item}}'  mode='widthFix'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

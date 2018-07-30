@@ -1,0 +1,45 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='wxSrc'>
+    <view class="userinfo">
+      <block>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </block>
+    </view>
+    <view class='card'>
+      <image src='../../images/card.png' mode='widthFix'></image>
+      <view class='cardBox'>
+          <text class='companyName'>{{all.company==null? "公司名称":all.company}}</text>
+          <view class='message'>
+            <text class='name'>{{all.name == null ? "姓名":all.name}}</text>
+            <view class='phone mBox'>             
+              <view class="{{all.phone==null?'':'has'}}"><text>C</text>{{all.phone==null ? '' : all.phone}}</view>
+            </view>
+            <view class='email mBox'>
+              <view class="{{all.mail==null?'':'has'}}"><text>M</text>{{all.mail==null ? '' : all.mail}}</view>
+            </view>
+            <view class='address mBox'>
+              <view class="{{all.address==null?'':'has'}}"><text>A</text>{{all.address==null ? '' : all.area.areaOne + all.address}}</view>
+            </view> 
+          </view>
+          <view class='create' bindtap="myCard">
+              <button wx:if="{{ all.name == null }}">创建我的名片</button>
+              <button wx:else>查看我的名片</button>
+            </view>
+      </view>     
+    </view>
+  </view>
+  <view class='threeBtn clearfloat'>
+    <view><image src='../../images/file.png' mode='widthFix' bindtap='bindMy'></image></view>
+    <view><image src='../../images/camera.png' mode='widthFix' bindtap='bindCamera'></image></view>
+    <view><image src='../../images/my.png' mode='widthFix' bindtap='myCard'></image></view>
+  </view>
+</view>
+<view class='hasGet' wx:if="{{ getStatus }}">
+  <view class='hasGetPosition'>
+    <text>授权登录</text>
+    <!-- <button open-type="getUserInfo">确定</button> -->
+    <button slot="confrim"  open-type="getUserInfo" bindgetuserinfo='getUserInfo'>确定</button>
+  </view>
+</view>

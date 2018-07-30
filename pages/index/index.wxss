@@ -1,0 +1,93 @@
+/**index.wxss**/
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userinfo-avatar {
+    width: 188rpx;
+    height: 188rpx;
+    margin: 38rpx 0rpx 12rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 10rpx solid rgba(255, 255, 255, 0.1);
+}
+.userinfo button {
+    margin: 130rpx 0 85rpx;
+}
+.userinfo-nickname {
+    color: #ffffff;
+    font-size: 36rpx;
+}
+.create {
+    border: 6rpx solid rgba(63, 140, 244, 0.1);
+    width: 412rpx;
+    height: 102rpx;
+    border-radius: 45rpx;
+    margin: 48rpx auto 0;
+}
+.create button {
+    width: 100%;
+    height: 100%;
+    border-radius: 45rpx;
+    background-color: #3f8cf4;
+    color: white;
+    font-size: 30rpx;
+    line-height: 90rpx;
+}
+.caontainer {
+    position: relative;
+}
+.threeBtn {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: 5.8%;
+    left: 0;
+}
+.threeBtn view {
+    width: 23%;
+    float: left;
+    margin-left: 6.5%;
+    display: block;
+}
+.threeBtn view:nth-child(1) {
+    margin-left: 9%;
+}
+.threeBtn view image {
+    width: 100%;
+}
+.hasGet{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column;
+}
+.hasGet .hasGetPosition{
+  width: 80%;
+  background-color: white;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.hasGet .hasGetPosition text{
+  display: block;
+  padding: 80rpx 0;
+}
+.hasGet .hasGetPosition button{
+  background-color: #26ccfa;
+  border-color: #26ccfa;
+  color: white;
+  font-size: 30rpx;
+}

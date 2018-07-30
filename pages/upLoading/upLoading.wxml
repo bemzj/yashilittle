@@ -1,0 +1,84 @@
+<!--pages/upLoading/upLoading.wxml-->
+<view id='upLoading'>
+  <view class='wrap'>
+    <view class='listWrap'>
+      <view class='list'>
+        <view class='list1'>
+          <view class='circle'></view>
+          <input class='name' bindtap='setName' placeholder='姓名'  type='text' value='{{detailData.name}}' bindinput='inputName'></input>
+          <input class='company' bindtap='setCompany' placeholder='公司名称' type='text' value='{{detailData.company}}'  bindinput='inputCompany'></input>
+        </view>
+        <view class='list2'>
+          <view>
+            <view class='list2-1'>
+              <view class='phone'>
+                <icon class='iconPhone'></icon>
+                <input bindtap='setPhone' placeholder='手机'  type='text' value='{{detailData.phone}}'  bindinput='inputPhone'></input>
+                <!-- <text bindtap='setPhone' >{{detailData.phone}}</text> -->
+              </view>
+              <view class='email'>
+                <icon class='iconEmail' ></icon>
+                <!-- <text bindtap='setEmail' >{{detailData.mail}}</text> -->
+                <input bindtap='setEmail' placeholder='邮箱'   type='text' value='{{detailData.mail}}'  bindinput='inputEmail'></input>
+              </view>
+            </view>
+            <view class='list2-2'>
+              <view class='address'>
+                <view class='iconAddress' ></view>
+                <!-- <text bindtap='setAddress' >{{detailData.address}}</text> -->
+                <input bindtap='setAddress'  placeholder='地址' type='text' value='{{detailData.address}}'  bindinput='inputAddress'></input>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='imgWrap'>
+      <!-- <image src='../../images/img01.png' mode='aspectFit'></image> -->
+      <view class='imgOn'>
+        <image src='{{ routeImg + phoneUrl }}' mode='aspectFit' wx:if="{{ phoneUrl != '' }}"></image>
+        <view class='imgUp' wx-if="{{imgPop}}">
+          <!-- <view wx:for='{{alltext}}' wx:key="index" style='left:{{x[index]}}px;top:{{y[index]}}px;' data-collect='{{item}}' bindtap='copy'>
+            {{item}}
+          </view> -->
+          <view class='imgCenter'>点击文字可复制</view>
+          <view data-collect='{{alltext.name}}' bindtap='copy' wx:if="{{alltext.name!=''}}">
+            名字: {{alltext.name}}
+          </view>
+          <view wx:for='{{alltext.company}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.company.length>0}}">
+            公司{{alltext.company.length>1?index+1:''}}: {{item}}
+          </view>
+          <view wx:for='{{alltext.tel_cell}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.tel_cell.length>0}}">
+            手机{{alltext.tel_cell.length>1?index+1:''}}: {{item}}
+          </view>
+          <view wx:for='{{alltext.tel_work}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.tel_work.length>0}}">
+            座机{{alltext.tel_work.length>1?index+1:''}}: {{item}}
+          </view>
+          <view wx:for='{{alltext.email}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.email.length>0}}">
+            邮箱{{alltext.email.length>1?index+1:''}}: {{item}}
+          </view>
+          <view wx:for='{{alltext.addr}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.addr.length>0}}">
+            地址{{alltext.addr.length>1?index+1:''}}: {{item}}
+          </view>
+          <view wx:for='{{alltext.department}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.department.length>0}}">
+            部门{{alltext.department.length>1?index+1:''}}: {{item}}
+          </view>
+          <view wx:for='{{alltext.title}}' wx:key="index" data-collect='{{item}}' bindtap='copy' wx:if="{{alltext.title.length>0}}">
+            标题{{alltext.title.length>1?index+1:''}}: {{item}}
+          </view>  
+        </view>
+      </view>  
+    </view>
+  </view>
+  <view class='bottom'>
+    <view>
+      <view>
+        <icon type='clear' color='rgb(222,222,225)' size='45' bindtap="clearPhone"></icon>
+      </view>
+      <view>
+        <button wx:if="{{ uploadBtn == false }}" bindtap="addMyCard">生成名片</button>
+        <button wx:else bindtap="pnoneUpload">上传图片</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/upLoading/upLoading",
+        "pages/nameCard/nameCard",
+        "pages/create/create",
+        
+    	"pages/my/my",
+    	"pages/case/case",
+    	"pages/about/about"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#26ccfa",
+        "navigationBarTitleText": "SBSTC小名片",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#f3f3f3"
+    }
+}

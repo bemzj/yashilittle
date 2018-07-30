@@ -1,0 +1,26 @@
+#about {
+    width: 100%;
+    height: 100%;
+}
+.title text {
+    font-size: 38rpx;
+}
+.part .content {
+    font-size: 28rpx;
+    line-height: 60rpx;
+    text-align: justify;
+}
+.part:nth-child(2n+1) {
+    background-color: #f3f3f3;
+}
+.imgBox {
+    margin: 20rpx 0 0;
+    padding-bottom: 20rpx
+}
+.imgBox>view {
+    width: 100%;
+    margin-bottom: 20rpx;
+}
+.imgBox image {
+    width: 100%;
+}

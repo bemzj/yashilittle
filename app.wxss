@@ -1,0 +1,120 @@
+/**app.wxss**/
+
+.container {
+    height: 100%;
+    box-sizing: border-box;
+}
+page {
+    min-height: 100%;
+}
+view {
+    box-sizing: border-box;
+}
+.clearfloat::after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+.wxSrc {
+    width: 100%;
+    height: 505rpx;
+    background: linear-gradient(to bottom, #26ccfa, #5b91ff);
+}
+.wxSrc.wxSrc1 {
+    height: 376rpx;
+}
+.card {
+    font-size: 32rpx;
+    width: 89.33%;
+    margin: 0 auto;
+    margin-top: 40rpx;
+    position: relative;
+}
+.cardBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.cardBox .companyName {
+    position: absolute;
+    top: 65rpx;
+    font-size: 28rpx;
+    color: #c9ccd2;
+    right: 50rpx;
+}
+.cardBox .companyName1 {
+    top: 40rpx;
+}
+.card image {
+    width: 100%;
+}
+.cardBox .message {
+    color: #c9ccd2;
+    font-size: 36rpx;
+    padding: 106rpx 0rpx 0rpx 44rpx;
+}
+.cardBox .message1 {
+    padding: 85rpx 0rpx 0rpx 44rpx;
+}
+.message .name {
+    font-size: 36rpx;
+    display: block;
+    margin-bottom: 35rpx;
+}
+.message .mBox {
+    height: 38rpx;
+    margin: 5px 0;
+    padding-left: 38rpx;
+    position: relative;
+}
+.message .mBox view {
+    margin: 9rpx 0;
+    width: 160rpx;
+    height: 20rpx;
+    background: #e1e4e9;
+    position: relative;
+}
+.message .mBox view.has {
+    margin: 0px;
+    height: 44rpx;
+    line-height: 38rpx;
+    background: transparent;
+    font-size: 26rpx;
+    width: 92% !important;
+}
+.message .mBox view text {
+    color: #509dfe;
+    position: absolute;
+    top: 50%;
+    margin-top: -19rpx;
+    font-size: 24rpx;
+    display: block;
+    left: -34rpx;
+    line-height: 38rpx;
+}
+.message .mBox.email view text {
+    left: -36rpx;
+}
+.message .mBox.email view {
+    width: 220rpx;
+}
+.message .mBox.address view {
+    width: 300rpx;
+}
+.cardTitle {
+    margin-left: 5.8%;
+    padding-top: 80rpx;
+}
+.cardTitle text {
+    line-height: 48rpx;
+    font-size: 36rpx;
+    display: block;
+    color: white
+}
+.card.card1 {
+    margin-top: 10rpx;
+}

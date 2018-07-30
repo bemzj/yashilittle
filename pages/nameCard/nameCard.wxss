@@ -1,0 +1,221 @@
+/* pages/nameCard/nameCard.wxss */
+
+page {
+    height: 100%;
+}
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+#cardName {
+    background-color: #efeff4;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrap1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.wrap1-1 {
+    margin-bottom: 40rpx;
+}
+.wrap1-1 image {
+    width: 450rpx;
+    height: 450rpx;
+}
+.wrap1-2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50rpx;
+}
+.wrap1-2 text {
+    color: #999999;
+    font-size: 24rpx;
+    margin-bottom: 15rpx;
+}
+.wrap1-3 button {
+    background-color: #3f8cf4;
+    color: #ffffff;
+    font-size: 30rpx;
+    padding: 15rpx 110rpx;
+    border-radius: 25px;
+    box-shadow: 0px 10px 10px #d1d9f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrap1-3 button icon {
+    margin-right: 20rpx;
+    display: inline-block;
+    width: 34rpx;
+    height: 27rpx;
+    background-size: 100% 100%;
+}
+.wrap2 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.wrap2 .wrap2-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 13%;
+    display: flex;
+    flex-direction: column;
+}
+.wrap2 .wrap2-bottom .opacity-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100rpx;
+    bottom: 155rpx;
+    background: linear-gradient(transparent, #efeff4);
+    /*#efeff4*/
+    z-index: 1005;
+}
+.wrap2 .wrap2-bottom button {
+    width: 450rpx;
+    background-color: #3f8cf4;
+    color: #ffffff;
+    font-size: 30rpx;
+    padding: 15rpx 0;
+    border-radius: 25px;
+    box-shadow: 0px 10px 10px #d1d9f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrap2 .wrap2-bottom button icon {
+    margin-right: 20rpx;
+    display: inline-block;
+    width: 34rpx;
+    height: 27rpx;
+    background-size: 100% 100%;
+}
+.wrap2 .wrap2-cont {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 87%;
+}
+.wrap-list {
+    width: 90%;
+    margin: auto;
+    position: relative;
+    padding: 1px;
+    overflow: hidden;
+    margin-top: 30rpx;
+}
+.wrap-list:last-child {
+    margin-bottom: 40rpx;
+}
+.wrap-list .circle {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    position: absolute;
+    top: 9rpx;
+    left: -142rpx;
+    z-index: 1001;
+}
+.infoWrap {
+    background-color: #ffffff;
+    border-radius: 5rpx;
+    position: absolute;
+    width: 100%;
+    height: 177rpx;
+    z-index: 100;
+    box-shadow: 0 2px 20px #d8e1fb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.infoWrap text {
+    margin-left: 70rpx;
+}
+.infoWrap .name {
+    color: #333333;
+    font-size: 32rpx;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+}
+.infoWrap .company {
+    color: #999999;
+    font-size: 24rpx;
+}
+.detailWrap {
+    transition: 0.5s;
+    width: 98%;
+    margin: auto;
+    margin-top: 7px;
+    background-color: #fefdff;
+    border-radius: 5rpx;
+    color: #666666;
+    font-size: 24rpx;
+    height: 177rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.showList .detailWrap {
+    margin-top: 177rpx;
+    /* transform: translateY(70rpx) */
+}
+.showList {
+    /* height: 345rpx; */
+}
+.detailWrap .dw-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+.dw1-1 {
+    margin-right: 40rpx;
+}
+.dw1-1, .dw1-2, .dw2-1 {
+    display: flex;
+    align-items: center;
+}
+.dw1-1 icon, .dw1-2 icon, .dw2-1 icon {
+    width: 30rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+.dw1-1 icon {
+    width: 25rpx;
+}
+.dw1-2 icon {
+    width: 35rpx;
+}
+.dw2-1 icon {
+    width: 25rpx;
+}
+.color0 {
+    background-color: #b056f6;
+}
+.color1 {
+    background-color: #3f8cf4;
+}
+.color2 {
+    background-color: #b056f6;
+}
+.color3 {
+    background-color: #f68169;
+}
+.delete{
+    position: absolute;
+    right: 30rpx;
+    top: 40rpx;
+}
